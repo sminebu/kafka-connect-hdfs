@@ -85,7 +85,13 @@ public class DataWriter {
     try {
       String hadoopHome = connectorConfig.getString(HdfsSinkConnectorConfig.HADOOP_HOME_CONFIG);
       System.setProperty("hadoop.home.dir", hadoopHome);
-
+      
+      String hadoopUserName = connectorConfig.getString("hdfs.user");
+      
+      if (!hadoopUserName.equals("")){
+    	  System.setProperty("HADOOP_USER_NAME", hadoopUserName);
+      }      
+      
       this.connectorConfig = connectorConfig;
       this.avroData = avroData;
       this.context = context;

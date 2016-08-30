@@ -36,6 +36,11 @@ import io.confluent.connect.hdfs.partitioner.TimeBasedPartitioner;
 public class HdfsSinkConnectorConfig extends AbstractConfig {
 
   // HDFS Group
+ public static final String HDFS_USER_NAME = "hdfs.user";
+ private static final String HDFS_USER_NAME_DOC =
+	      "The HDFS connection User.";
+ private static final String HDFS_USER_NAME_DISPLAY = "HDFS USER";
+	  
   public static final String HDFS_URL_CONFIG = "hdfs.url";
   private static final String HDFS_URL_DOC =
       "The HDFS connection URL. This configuration has the format of hdfs:://hostname:port and "
@@ -269,7 +274,8 @@ public class HdfsSinkConnectorConfig extends AbstractConfig {
         .define(HADOOP_HOME_CONFIG, Type.STRING, HADOOP_HOME_DEFAULT, Importance.HIGH, HADOOP_HOME_DOC, HDFS_GROUP, 3, Width.SHORT, HADOOP_HOME_DISPLAY)
         .define(TOPICS_DIR_CONFIG, Type.STRING, TOPICS_DIR_DEFAULT, Importance.HIGH, TOPICS_DIR_DOC, HDFS_GROUP, 4, Width.SHORT, TOPICS_DIR_DISPLAY)
         .define(LOGS_DIR_CONFIG, Type.STRING, LOGS_DIR_DEFAULT, Importance.HIGH, LOGS_DIR_DOC, HDFS_GROUP, 5, Width.SHORT, LOGS_DIR_DISPLAY)
-        .define(FORMAT_CLASS_CONFIG, Type.STRING, FORMAT_CLASS_DEFAULT, Importance.HIGH, FORMAT_CLASS_DOC, HDFS_GROUP, 6, Width.SHORT, FORMAT_CLASS_DISPLAY);
+        .define(FORMAT_CLASS_CONFIG, Type.STRING, FORMAT_CLASS_DEFAULT, Importance.HIGH, FORMAT_CLASS_DOC, HDFS_GROUP, 6, Width.SHORT, FORMAT_CLASS_DISPLAY)
+        .define(HDFS_USER_NAME, Type.STRING, Importance.LOW, HDFS_USER_NAME_DOC, HDFS_GROUP, 7, Width.MEDIUM, HDFS_USER_NAME_DISPLAY);
 
     // Define Hive configuration group
     config.define(HIVE_INTEGRATION_CONFIG, Type.BOOLEAN, HIVE_INTEGRATION_DEFAULT, Importance.HIGH, HIVE_INTEGRATION_DOC, HIVE_GROUP, 1, Width.SHORT, HIVE_INTEGRATION_DISPLAY,
